@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
-import IconMenu from '../component/IconMenu';
+import IconmMenu from '../component/IconMenu';
+import IconMenu from '../Components/IconMenu';
 
 const Data = [
   {id: 1, label: 'Top Up'},

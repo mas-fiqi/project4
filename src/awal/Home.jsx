@@ -1,235 +1,166 @@
-import React, { useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import IconMenu from '../component/IconMenu';
+import React from 'react';
+import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Data = [
-  {
-    id: 1,
-    label: 'mlb',
-    icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 2,
-    label: 'free fire',
-    icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 3,
-    label: 'PUG',
-    icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 4,
-    label: 'HOK',
-    icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 5,
-    label: 'FC mobile',
-    icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-];
+const HomeScreen = () => {
+  const navigation = useNavigation();
 
-const Home = ({ navigation }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex(activeIndex => (activeIndex + 1) % Data.length);
-    }, 900); // Change image every 0.9 seconds
-
-    return () => clearInterval(interval);
-  }, []);
+  const handleMasukPress = () => {
+    navigation.navigate('Loby'); // Ubah sesuai dengan nama screen yang tepat
+  };
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={Data}
-        renderItem={({ item, index }) => (
-          <IconMenu
-            label={item.label}
-            icon={item.icon}
-            isActive={index === activeIndex}
-          />
-        )}
-        horizontal
-        keyExtractor={item => item.id.toString()}
-        initialScrollIndex={activeIndex}
-        getItemLayout={(data, index) => ({
-          length: 100, // Horizontal item length (adjust as needed)
-          offset: 100 * index,
-          index,
-        })}
-        pagingEnabled // Ensure each item has one image
-      />
-      <View style={styles.imageRowContainer}>
-        {Data.map((item, index) => (
-          <Image key={item.id} source={{ uri: item.icon }} style={styles.image} />
-        ))}
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Sapi jalan</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={handleMasukPress}>
+          <Text style={styles.loginButtonText}>MASUK</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Loby')}
-        style={styles.btn}>
-        <Text style={styles.txt}>Loby</Text>
-      </TouchableOpacity>
-    </View>
+
+      <Image
+        source={{ uri: 'https://wallpapers.com/images/high/mobile-legends-floral-knight-lancelot-wm83mpf71jwlcegb.webp' }}
+        style={styles.banner}
+      />
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Paling Populer</Text>
+        <View style={styles.items}>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('ff')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/free-fire-alok-game-concert-zdz2y3i7qir6091h.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Free Fire</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('pubg')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>PUBG mobile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('ml')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/mobile-legends-floral-knight-lancelot-wm83mpf71jwlcegb.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Mobile Legends: Bang Bang</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Games</Text>
+        <View style={styles.items}>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('ml')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/mobile-legends-floral-knight-lancelot-wm83mpf71jwlcegb.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Mobile Legends: Bang Bang</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('ff')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/free-fire-alok-game-concert-zdz2y3i7qir6091h.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Free Fire</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('pubg')}>
+            <Image
+              source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>PUBG Mobile</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Digital Voucher</Text>
+        <View style={styles.items}>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('baru')}>
+            <Image
+              source={{ uri: 'https://cdn1-production-images-kly.akamaized.net/FW_pbCKNMxDTn3cV0icP3XgBx2o=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4100889/original/081579600_1658802835-Google_Play1.jpg' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Kode Voucher Google Play</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('baru1')}>
+            <Image
+              source={{ uri: 'https://i.pinimg.com/736x/f5/8c/a3/f58ca3528b238877e9855fcac1daa328.jpg' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Kode Vocer Dana</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Loby')}>
+            <Image
+              source={{ uri: 'https://i.pinimg.com/736x/94/3c/97/943c971903518e53ffd324dd51e46a90.jpg' }}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Voucher gopay</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
-
-export default Home;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#E0FFFF', // Light blue background color (Hex code for light blue)
+    backgroundColor: '#fff',
   },
-  btn: {
-    margin: 170,
-    padding: 10,
-    justifyContent: 'center',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 10,
-    backgroundColor: 'blue',
+    padding: 15,
+    backgroundColor: '#007bff',
   },
-  txt: {
+  headerText: {
+    fontSize: 20,
+    color: '#fff',
+  },
+  loginButton: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+  },
+  loginButtonText: {
+    color: '#007bff',
+  },
+  banner: {
+    width: '100%',
+    height: 200,
+  },
+  section: {
+    padding: 15,
+  },
+  sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+    marginBottom: 10,
   },
-  imageRowContainer: {
+  items: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
   },
-  image: {
-    width: 190, // Adjust as needed
-    height: 100, // Adjust as needed
-    resizeMode: 'cover',
+  item: {
+    width: '30%',
+    margin: '1.5%',
+    alignItems: 'center',
+  },
+  itemImage: {
+    width: '100%',
+    height: 100,
     borderRadius: 10,
-    margin: 5,
+  },
+  itemText: {
+    marginTop: 5,
+    textAlign: 'center',
   },
 });
 
-// import React, { useState, useEffect } from 'react';
-// import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-// import IconMenu from '../component/IconMenu';
-
-// const Data = [
-//   { id: 1, label: 'mlb', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//   { id: 2, label: 'free fire', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//   { id: 3, label: 'PUG', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//   { id: 4, label: 'HOK', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-//   { id: 5, label: 'FC mobile', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-// ];
-
-// const Home = ({ navigation }) => {
-//   const [activeIndex, setActiveIndex] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setActiveIndex(activeIndex => (activeIndex + 1) % Data.length);
-//     }, 900); // Ganti gambar setiap 0.9 detik
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   return (
-//     <View>
-//       <FlatList
-//         data={Data}
-//         renderItem={({ item, index }) => <IconMenu label={item.label} icon={item.icon} isActive={index === activeIndex} />}
-//         horizontal
-//         keyExtractor={item => item.id.toString()}
-//         initialScrollIndex={activeIndex}
-//         getItemLayout={(data, index) => ({
-//           length: 100, // Panjang item horizontal (sesuaikan sesuai kebutuhan)
-//           offset: 100 * index,
-//           index,
-//         })}
-//         pagingEnabled // Memastikan setiap item memiliki satu gambar
-//       />
-//       <TouchableOpacity
-//         onPress={() => navigation.navigate('Home')}
-//         style={styles.btn}>
-//         <Text style={styles.txt}>Home</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// export default Home;
-
-// const styles = StyleSheet.create({
-//   btn: {
-//     margin: 10,
-//     padding: 10,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     borderRadius: 10,
-//     backgroundColor: 'green',
-//   },
-//   txt: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-// });
-
-// import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
-// import React from 'react';
-// import IconMenu from '../component/IconMenu';
-
-// const Data = [
-//   {id: 1, label: '   mlb', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-//   {id: 2, label: '     free fire', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-//   {id: 3, label: '    PUG', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-//   {id: 4, label: '    HOK', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-//   {id: 5, label: '   FC mobile', icon: 'https://images.unsplash.com/photo-1606143704644-0dece2c43e54?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'},
-// ];
-
-// const Home = ({navigation}) => {
-//   return (
-//     <View>
-//       <FlatList
-//         data={Data}
-//         renderItem={({item}) => <IconMenu label={item.label} icon={item.icon} />}
-//         horizontal={true}
-//         keyExtractor={item => item.id.toString()}
-//       />
-//       <TouchableOpacity
-//         onPress={() => navigation.navigate('Home')}
-//         style={styles.btn}>
-//         <Text style={styles.txt}>Home</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-// export default Home;
-
-// const styles = StyleSheet.create({
-//   btn: {
-//     margin: 10,
-//     padding: 10,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     borderRadius: 10,
-//     backgroundColor: 'green',
-//   },
-//   txt: {
-//     fontSize: 18,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-// });
+export default HomeScreen;

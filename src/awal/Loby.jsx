@@ -1,51 +1,134 @@
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
-import IconMenu from '../component/IconMenu';
+import { ScrollView, View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 
-const Data = [
-  {id: 1, label: 'Top Up'},
-  {id: 2, label: 'Diskon'},
-  {id: 3, label: 'Go Food'},
-  {id: 4, label: 'Grab'},
-  {id: 5, label: 'Gojek'},
-];
-
-const Loby = ({navigation}) => {
+const App = () => {
   return (
-    <View>
-      <FlatList
-        data={Data}
-        renderItem={({item}) => <IconMenu label={item.label} />}
-        horizontal={true}
-      />
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Home')}
-        style={styles.btn}>
-        <Text style={styles.txt}>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Pengaturan')}
-        style={styles.btn}>
-        <Text style={styles.txt}>Pengaturan</Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Pilihan</Text>
+        <Text style={styles.headerText}>Tema</Text>
+        <Text style={styles.activeHeaderText}>Wallpaper</Text>
+        <Text style={styles.headerText}>Nada dering</Text>
+        <Text style={styles.headerText}>Humor</Text>
+      </View>
+
+      {/* Search Bar */}
+      <View style={styles.searchBar}>
+        <TextInput
+          placeholder="Search"
+          style={styles.searchInput}
+        />
+      </View>
+
+      {/* Categories */}
+      <View style={styles.categories}>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>Kategori</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>Terbaru</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>Alam</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>Karakter</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.categoryIcon} />
+          <Text style={styles.categoryText}>Top</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Wallpapers */}
+      <View style={styles.wallpapers}>
+        <View style={styles.wallpaperRow}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+        </View>
+        <View style={styles.wallpaperRow}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+        </View>
+        <View style={styles.wallpaperRow}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+        </View>
+        <View style={styles.wallpaperRow}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+        </View>
+        <View style={styles.wallpaperRow}>
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+          <Image source={{ uri: 'https://wallpapers.com/images/high/pubg-squad-cool-to-be-hot-skin-6k7q9qx951vya9vt.webp' }} style={styles.wallpaper} />
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
-export default Loby;
-
 const styles = StyleSheet.create({
-  btn: {
-    margin: 10,
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    backgroundColor: 'green',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
   },
-  txt: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+    backgroundColor: '#f8f8f8',
+  },
+  headerText: {
+    fontSize: 16,
+    color: '#000',
+  },
+  activeHeaderText: {
+    fontSize: 16,
+    color: '#ff6600',
+  },
+  searchBar: {
+    padding: 10,
+  },
+  searchInput: {
+    backgroundColor: '#f0f0f0',
+    borderRadius: 5,
+    padding: 10,
+    fontSize: 16,
+  },
+  categories: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10,
+  },
+  category: {
+    alignItems: 'center',
+  },
+  categoryIcon: {
+    width: 40,
+    height: 40,
+  },
+  categoryText: {
+    marginTop: 5,
+    fontSize: 14,
+  },
+  wallpapers: {
+    padding: 10,
+  },
+  wallpaperRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  wallpaper: {
+    width: '48%',
+    height: 200,
+    borderRadius: 10,
   },
 });
+
+export default App;
