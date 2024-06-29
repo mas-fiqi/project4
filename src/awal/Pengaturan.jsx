@@ -10,7 +10,7 @@ const Data = [
   {id: 5, label: 'Gojek'},
 ];
 
-const Loby = ({navigation}) => {
+const Pengaturan = ({navigation}) => {
   return (
     <View>
       <FlatList
@@ -23,16 +23,11 @@ const Loby = ({navigation}) => {
         style={styles.btn}>
         <Text style={styles.txt}>Home</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Pengaturan')}
-        style={styles.btn}>
-        <Text style={styles.txt}>Pengaturan</Text>
-      </TouchableOpacity>
     </View>
   );
 };
 
-export default Loby;
+export default Pengaturan;
 
 const styles = StyleSheet.create({
   btn: {
