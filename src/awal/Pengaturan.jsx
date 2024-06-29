@@ -1,11 +1,10 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
-import IconmMenu from '../component/IconMenu';
 import IconMenu from '../Components/IconMenu';
 
 const Data = [
-  {id: 1, label: 'Top Up'},
-  {id: 2, label: 'Diskon'},
+  {id: 1, label: 'HUBUNGI KAMI'},
+  {id: 2, label: 'LAPORAN/MASLAH'},
   {id: 3, label: 'Go Food'},
   {id: 4, label: 'Grab'},
   {id: 5, label: 'Gojek'},

@@ -11,6 +11,8 @@ import Loby from './Awal/Loby'; // Import Loby jika diperlukan
 import Pengaturan from './Awal/Pengaturan'; // Import Pengaturan jika diperlukan
 import ff from './Awal/ff';
 import pubg from './Awal/pubg';
+import coc from './Awal/coc';
+import hok from './Awal/hok';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -71,6 +73,16 @@ function App() {
         <Stack.Screen
           name="pubg"
           component={pubg}
+          options={{ title: 'PUBG mobile' }} // Ubah judul sesuai kebutuhan Anda
+        />
+                <Stack.Screen
+          name="coc"
+          component={coc}
+          options={{ title: 'PUBG mobile' }} // Ubah judul sesuai kebutuhan Anda
+        />
+                <Stack.Screen
+          name="hok"
+          component={hok}
           options={{ title: 'PUBG mobile' }} // Ubah judul sesuai kebutuhan Anda
         />
       </Stack.Navigator>

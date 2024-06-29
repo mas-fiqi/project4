@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
@@ -9,10 +9,22 @@ const HomeScreen = () => {
     navigation.navigate('Loby'); // Ubah sesuai dengan nama screen yang tepat
   };
 
+  const handleGooglePlayPress = () => {
+    Linking.openURL('https://play.google.com/store'); // URL Google Play Store
+  };
+
+  const handleDanaPress = () => {
+    Linking.openURL('https://www.dana.id/'); // URL Dana
+  };
+
+  const handleGoPayPress = () => {
+    Linking.openURL('https://www.gojek.com/gopay/'); // URL GoPay
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Sapi jalan</Text>
+        <Text style={styles.headerText}>OBE'STORE</Text>
         <TouchableOpacity style={styles.loginButton} onPress={handleMasukPress}>
           <Text style={styles.loginButtonText}>MASUK</Text>
         </TouchableOpacity>
@@ -80,26 +92,26 @@ const HomeScreen = () => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Digital Voucher</Text>
         <View style={styles.items}>
-          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('baru')}>
+          <TouchableOpacity style={styles.item} onPress={handleGooglePlayPress}>
             <Image
               source={{ uri: 'https://cdn1-production-images-kly.akamaized.net/FW_pbCKNMxDTn3cV0icP3XgBx2o=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4100889/original/081579600_1658802835-Google_Play1.jpg' }}
               style={styles.itemImage}
             />
             <Text style={styles.itemText}>Kode Voucher Google Play</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('baru1')}>
+          <TouchableOpacity style={styles.item} onPress={handleDanaPress}>
             <Image
               source={{ uri: 'https://i.pinimg.com/736x/f5/8c/a3/f58ca3528b238877e9855fcac1daa328.jpg' }}
               style={styles.itemImage}
             />
             <Text style={styles.itemText}>Kode Vocer Dana</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={() => navigation.navigate('Loby')}>
+          <TouchableOpacity style={styles.item} onPress={handleGoPayPress}>
             <Image
               source={{ uri: 'https://i.pinimg.com/736x/94/3c/97/943c971903518e53ffd324dd51e46a90.jpg' }}
               style={styles.itemImage}
             />
-            <Text style={styles.itemText}>Voucher gopay</Text>
+            <Text style={styles.itemText}>Voucher GoPay</Text>
           </TouchableOpacity>
         </View>
       </View>
