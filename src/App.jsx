@@ -13,6 +13,7 @@ import ff from './Awal/ff';
 import pubg from './Awal/pubg';
 import coc from './Awal/coc';
 import hok from './Awal/hok';
+import mlbayar from './Awal/mlbayar';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -84,6 +85,11 @@ function App() {
           name="hok"
           component={hok}
           options={{ title: 'Honor of kings' }} // Ubah judul sesuai kebutuhan Anda
+        />
+        <Stack.Screen
+          name="mlbayar"
+          component={mlbayar}
+          options={{ title: 'Mobile legends' }} // Ubah judul sesuai kebutuhan Anda
         />
       </Stack.Navigator>
     </NavigationContainer>

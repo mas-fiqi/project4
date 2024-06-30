@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
 
-const App = () => {
+const Ml = ({ navigation }) => {
+  const [selectedDiamond, setSelectedDiamond] = useState(null);
+
+  const diamondOptions = [
+    { amount: 5, price: 'Rp1.500' },
+    { amount: 10, price: 'Rp2.850' },
+    { amount: 14, price: 'Rp3.800' },
+    { amount: 18, price: 'Rp4.750' },
+    { amount: 36, price: 'Rp9.500' },
+    { amount: 74, price: 'Rp18.400' },
+    { amount: 220, price: 'Rp55.000' },
+    { amount: 366, price: 'Rp91.500' },
+  ];
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -29,41 +42,22 @@ const App = () => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>2. Pilih Jumlah</Text>
         <View style={styles.diamondsContainer}>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>5 Diamonds</Text>
-            <Text style={styles.priceText}>Rp1.500</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>10 Diamonds</Text>
-            <Text style={styles.priceText}>Rp2.850</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>14 Diamonds</Text>
-            <Text style={styles.priceText}>Rp3.800</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>18 Diamonds</Text>
-            <Text style={styles.priceText}>Rp4.750</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>36 Diamonds</Text>
-            <Text style={styles.priceText}>Rp9.500</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>74 Diamonds</Text>
-            <Text style={styles.priceText}>Rp18.400</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>220 Diamonds</Text>
-            <Text style={styles.priceText}>Rp55.000</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.diamondOption}>
-            <Text style={styles.diamondText}>366 Diamonds</Text>
-            <Text style={styles.priceText}>Rp91.500</Text>
-          </TouchableOpacity>
+          {diamondOptions.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.diamondOption,
+                selectedDiamond === option.amount && styles.selectedDiamondOption,
+              ]}
+              onPress={() => setSelectedDiamond(option.amount)}
+            >
+              <Text style={styles.diamondText}>{option.amount} Diamonds</Text>
+              <Text style={styles.priceText}>{option.price}</Text>
+            </TouchableOpacity>
+          ))}
         </View>
       </View>
-      <TouchableOpacity style={styles.continueButton}>
+      <TouchableOpacity style={styles.continueButton} onPress={() => navigation.navigate('mlbayar')}>
         <Text style={styles.continueButtonText}>LANJUTKAN</Text>
       </TouchableOpacity>
       <View style={styles.section}>
@@ -167,6 +161,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'center',
   },
+  selectedDiamondOption: {
+    backgroundColor: '#27ae60',
+  },
   diamondText: {
     fontSize: 16,
     color: '#2c3e50',
@@ -224,4 +221,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Ml;
