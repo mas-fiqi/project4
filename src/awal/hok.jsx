@@ -5,7 +5,7 @@ const App = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image source={{ uri: 'https://wallpapers.com/images/high/mobile-legends-floral-knight-lancelot-wm83mpf71jwlcegb.webp' }} style={styles.logo} />
+        <Image source={{ uri: 'https://wallpapers.com/images/high/anime-gaming-z891kqrphckcklvs.webp' }} style={styles.logo} />
         <View style={styles.headerIcons}>
           <TouchableOpacity>
             <Text style={styles.icon}>🔍</Text>
@@ -16,7 +16,7 @@ const App = () => {
         </View>
       </View>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: 'https://wallpapers.com/images/high/mobile-legends-floral-knight-lancelot-wm83mpf71jwlcegb.webp' }} style={styles.banner} />
+        <Image source={{ uri: 'https://wallpapers.com/images/high/anime-gaming-z891kqrphckcklvs.webp' }} style={styles.banner} />
       </View>
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>1. Masukkan User ID</Text>
@@ -63,6 +63,37 @@ const App = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <TouchableOpacity style={styles.continueButton}>
+        <Text style={styles.continueButtonText}>LANJUTKAN</Text>
+      </TouchableOpacity>
+      <View style={styles.section}>
+        <Text style={styles.infoText}>
+        Honor of Kings (juga dikenal sebagai Arena of Valor di luar China) adalah game MOBA yang sangat populer di Asia, di mana pemain memilih pahlawan dengan keahlian unik dan bekerja sama dalam tim untuk mengalahkan lawan dalam pertempuran 5v5.!
+        </Text>
+        <Text style={styles.sectionTitle}>Download Honor of Kings: Bang Bang</Text>
+        <View style={styles.downloadLinks}>
+          <TouchableOpacity>
+            <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png' }} style={styles.downloadLink} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Available_on_the_App_Store_%28black%29.svg/2560px-Available_on_the_App_Store_%28black%29.svg.png' }} style={styles.downloadLink} />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.navbar}>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.navButtonText}>Top Up</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.navButtonText}>Kepesan</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton}>
+          <Text style={styles.navButtonText}>Help</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Jika Anda mengalami masalah, silakan hubungi kami melalui email support masfiqi2@gmail.com.</Text>
+      </View>
     </ScrollView>
   );
 };
@@ -70,14 +101,14 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0d3b66',
+    backgroundColor: '#f0f4f7',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    backgroundColor: '#034f84',
+    backgroundColor: '#3498db',
   },
   logo: {
     width: 80,
@@ -102,7 +133,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   section: {
-    backgroundColor: '#034f84',
+    backgroundColor: '#2980b9',
     margin: 10,
     borderRadius: 10,
     padding: 15,
@@ -113,7 +144,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: '#ecf0f1',
     borderRadius: 5,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -121,7 +152,7 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 14,
-    color: '#fff',
+    color: '#ecf0f1',
   },
   diamondsContainer: {
     flexDirection: 'row',
@@ -130,7 +161,7 @@ const styles = StyleSheet.create({
   },
   diamondOption: {
     width: '48%',
-    backgroundColor: '#fff',
+    backgroundColor: '#ecf0f1',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
@@ -138,11 +169,58 @@ const styles = StyleSheet.create({
   },
   diamondText: {
     fontSize: 16,
-    color: '#000',
+    color: '#2c3e50',
   },
   priceText: {
     fontSize: 14,
-    color: '#034f84',
+    color: '#2980b9',
+  },
+  continueButton: {
+    backgroundColor: '#27ae60',
+    borderRadius: 5,
+    padding: 10,
+    alignItems: 'center',
+    margin: 10,
+  },
+  continueButtonText: {
+    fontSize: 18,
+    color: '#fff',
+  },
+  downloadLinks: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 10,
+  },
+  downloadLink: {
+    width: 150,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#3498db',
+    paddingVertical: 10,
+    margin: 10,
+    borderRadius: 10,
+  },
+  navButton: {
+    padding: 10,
+  },
+  navButtonText: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  footer: {
+    backgroundColor: '#2980b9',
+    padding: 15,
+    margin: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#fff',
+    fontSize: 14,
   },
 });
 
