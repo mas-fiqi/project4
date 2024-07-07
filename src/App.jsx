@@ -5,15 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from './Awal/Home'; // Ubah sesuai dengan nama file yang Anda gunakan untuk HomeScreen
-import ml from './Awal/ml'; // Import ml.jsx di sini
-import Loby from './Awal/Loby'; // Import Loby jika diperlukan
-import Pengaturan from './Awal/Pengaturan'; // Import Pengaturan jika diperlukan
-import ff from './Awal/ff';
-import pubg from './Awal/pubg';
-import coc from './Awal/coc';
-import hok from './Awal/hok';
-import mlbayar from './Awal/mlbayar';
+import Home from './awal/Home';
+import ml from './awal/ml'; // Import ml.jsx di sini
+import Loby from './awal/Loby'; // Import Loby jika diperlukan
+import Pengaturan from './awal/Pengaturan'; // Import Pengaturan jika diperlukan
+import ff from './awal/ff';
+import pubg from './awal/pubg';
+import coc from './awal/coc';
+import hok from './awal/hok';
+import mlbayar from './awal/mlbayar';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -35,7 +35,7 @@ const MenuTab = () => {
         component={Loby}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons name="cog" size={size} color={color} />
+            <MaterialCommunityIcons name="briefcase-plus" size={size} color={color} />
           ),
         }}
       />
