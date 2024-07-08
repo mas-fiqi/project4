@@ -1,9 +1,9 @@
 // App.jsx
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './awal/Home';
 import ml from './awal/ml'; // Import ml.jsx di sini
@@ -20,12 +20,13 @@ const Tabs = createBottomTabNavigator();
 
 const MenuTab = () => {
   return (
-    <Tabs.Navigator screenOptions={{ tabBarActiveTintColor: 'green' }}>
+    <Tabs.Navigator screenOptions={{tabBarActiveTintColor: 'green'}}>
       <Tabs.Screen
         name="Home"
         component={Home} // Ganti dengan komponen yang menampilkan HomeScreen Anda
         options={{
-          tabBarIcon: ({ size, color }) => (
+          headerShown: false,
+          tabBarIcon: ({size, color}) => (
             <MaterialCommunityIcons name="home" size={size} color={color} />
           ),
         }}
@@ -34,8 +35,13 @@ const MenuTab = () => {
         name="Loby"
         component={Loby}
         options={{
-          tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons name="briefcase-plus" size={size} color={color} />
+          headerShown: false,
+          tabBarIcon: ({size, color}) => (
+            <MaterialCommunityIcons
+              name="briefcase-plus"
+              size={size}
+              color={color}
+            />
           ),
         }}
       />
@@ -43,7 +49,8 @@ const MenuTab = () => {
         name="Pengaturan"
         component={Pengaturan}
         options={{
-          tabBarIcon: ({ size, color }) => (
+          headerShown: false,
+          tabBarIcon: ({size, color}) => (
             <MaterialCommunityIcons name="account" size={size} color={color} />
           ),
         }}
@@ -59,37 +66,37 @@ function App() {
         <Stack.Screen
           name="Main"
           component={MenuTab}
-          options={{ headerShown: false }}
+          options={{headerShown: false}}
         />
         <Stack.Screen
           name="ml"
           component={ml}
-          options={{ title: 'Mobile Legends' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'Mobile Legends'}} // Ubah judul sesuai kebutuhan Anda
         />
         <Stack.Screen
           name="ff"
           component={ff}
-          options={{ title: 'fre fre' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'fre fre'}} // Ubah judul sesuai kebutuhan Anda
         />
         <Stack.Screen
           name="pubg"
           component={pubg}
-          options={{ title: 'PUBG mobile' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'PUBG mobile'}} // Ubah judul sesuai kebutuhan Anda
         />
-                <Stack.Screen
+        <Stack.Screen
           name="coc"
           component={coc}
-          options={{ title: 'Clan of clans' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'Clan of clans'}} // Ubah judul sesuai kebutuhan Anda
         />
-                <Stack.Screen
+        <Stack.Screen
           name="hok"
           component={hok}
-          options={{ title: 'Honor of kings' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'Honor of kings'}} // Ubah judul sesuai kebutuhan Anda
         />
         <Stack.Screen
           name="mlbayar"
           component={mlbayar}
-          options={{ title: 'Mobile legends' }} // Ubah judul sesuai kebutuhan Anda
+          options={{title: 'Mobile legends'}} // Ubah judul sesuai kebutuhan Anda
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -99,4 +106,3 @@ function App() {
 export default App;
 
 const styles = StyleSheet.create({});
-
